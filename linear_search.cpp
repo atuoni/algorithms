@@ -8,7 +8,6 @@ int linear_search(int data[] , int size, int item)
 {
     int element;
     int answer_search = 0;  // initial set as 0 (not found) 
-    
     for(element=0; element < size; element++)
     {
         if(data[element]==item)

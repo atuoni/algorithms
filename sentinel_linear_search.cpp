@@ -8,6 +8,7 @@ int sentinel_linear_search (int array[],int size,int item)
     int last_data;
     int element;
     int answer_search=0;
+    
     last_data=array[size];
     
     array[size]=item;

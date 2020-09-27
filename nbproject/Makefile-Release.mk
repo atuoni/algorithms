@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/array_generator.o \
 	${OBJECTDIR}/better_linear_search.o \
 	${OBJECTDIR}/linear_search.o \
 	${OBJECTDIR}/main_menu.o \
@@ -65,6 +66,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/search_algorithms: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/search_algorithms ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/array_generator.o: array_generator.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/array_generator.o array_generator.cpp
 
 ${OBJECTDIR}/better_linear_search.o: better_linear_search.cpp
 	${MKDIR} -p ${OBJECTDIR}
