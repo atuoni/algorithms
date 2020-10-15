@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>array_generator.h</itemPath>
       <itemPath>better_linear_search.h</itemPath>
+      <itemPath>binary_search.h</itemPath>
       <itemPath>linear_search.h</itemPath>
       <itemPath>recursive_linear_search.h</itemPath>
       <itemPath>sentinel_linear_search.h</itemPath>
@@ -15,6 +16,7 @@
                    projectFiles="true">
       <itemPath>array_generator.cpp</itemPath>
       <itemPath>better_linear_search.cpp</itemPath>
+      <itemPath>binary_search.cpp</itemPath>
       <itemPath>linear_search.cpp</itemPath>
       <itemPath>main_menu.cpp</itemPath>
       <itemPath>recursive_linear_search.cpp</itemPath>
@@ -53,6 +55,10 @@
       <item path="better_linear_search.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="better_linear_search.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="binary_search.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="binary_search.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="linear_search.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -96,6 +102,10 @@
       <item path="better_linear_search.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="better_linear_search.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="binary_search.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="binary_search.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="linear_search.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -9,10 +9,8 @@
         <group>
             <file>file:/home/amauri/NetBeansProjects/Search%20Algorithms/linear_search.cpp</file>
             <file>file:/home/amauri/NetBeansProjects/Search%20Algorithms/main_menu.cpp</file>
-            <file>file:/home/amauri/NetBeansProjects/Search%20Algorithms/recursive_linear_search.cpp</file>
-            <file>file:/home/amauri/NetBeansProjects/Search%20Algorithms/better_linear_search.cpp</file>
-            <file>file:/home/amauri/NetBeansProjects/Search%20Algorithms/array_generator.cpp</file>
-            <file>file:/home/amauri/NetBeansProjects/Search%20Algorithms/sentinel_linear_search.cpp</file>
+            <file>file:/home/amauri/NetBeansProjects/Search%20Algorithms/binary_search.cpp</file>
+            <file>file:/home/amauri/NetBeansProjects/Search%20Algorithms/binary_search.h</file>
         </group>
     </open-files>
 </project-private>

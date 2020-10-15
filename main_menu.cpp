@@ -2,7 +2,7 @@
 
 //************************************************************************************
 // File:   main.cpp
-// Author: Amauri Tuoni    Version 2.1
+// Author: Amauri Tuoni    Version 2.2
 // 
 // Program to test search algorithms. User can choose the size of the array that will be
 // tested.
@@ -10,16 +10,17 @@
 // Created on 26 de Setembro de 2020, 17:40
 //************************************************************************************
 
-#include <cstdlib>  //general library
-#include <iostream>   //prototype for the cout function
-#include <new>        
-#include <limits>
+#include <cstdlib>     //general library
+#include <iostream>   //library for the cout function
+#include <new>        //library for the new function
+#include <limits>     // library
 
 #include "linear_search.h"   //header linear search
 #include "better_linear_search.h"   //header better linear search
 #include "sentinel_linear_search.h"  //header sentinel linear search
 #include "recursive_linear_search.h"  //header recursive linear search
 #include "array_generator.h"   //header of the array generator
+#include "binary_search.h"
 
 #define RAND_MAX 10       // define the random number range  
 
@@ -38,10 +39,10 @@ using namespace std;
 
 int main(void) 
 {
-    int menu_item, answer, search_item;
-    int size_array;
+    int menu_item, answer, search_item;    //variables 
+    int size_array;                          //variable to save the size of data_array
     int *data_array;                         // pointer to the data array
-    cout << " ********************** Search Algorithms ********************** " << endl;  // print on the screen the name of the program
+    cout << " ********************** Search Algorithms v2.2 **************** Made by: A.T. " << endl<<endl;  // print on the screen the name of the program
     size_array=data_array_size();            // call the function to get the size of the data array 
     try
     {
@@ -63,20 +64,21 @@ int main(void)
         cout<<"2 - Better Linear search"<<endl;
         cout<<"3 - Sentinel Linear search"<<endl;
         cout<<"4 - Recursive Linear search"<<endl;
-        cout<<"5 - Show array generated"<<endl;
-        cout<<"6 - Modify array generated"<<endl;
-        cout<<"7 - Exit"<<endl<<endl;
+        cout<<"5 - Binary search with bubble sort"<<endl;
+        cout<<"6 - Show array generated"<<endl;
+        cout<<"7 - Modify array generated"<<endl;
+        cout<<"8 - Exit"<<endl<<endl;
     
         cout<<"Type the menu option: "<<endl;        //print on the screen message
-        cin.clear(ios::goodbit);
+        cin.clear(ios::goodbit);    //clean the goodbit
         
         cin >> menu_item;                            //get the menu option
             
         
-        while (!cin.good())
+        while (!cin.good())  //loop while an incorrect value is typed
         {
-            cout<<"Incorrect menu data! Type a number..."<<endl;
-            cin.clear(ios::goodbit);
+            cout<<"Incorrect data typed! Type a number..."<<endl;
+            cin.clear(ios::goodbit);   //clean the goodbit
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             
             cin>> menu_item;   //get the menu item option from the user
@@ -88,30 +90,39 @@ int main(void)
             case 1:
                 search_item = get_search_item();          //call function to get the search data
                 answer = linear_search(data_array,size_array,search_item);   //call function to do a linear search
+                show_data_array(data_array,size_array);    //call function to show the data array created
                 print_result(answer,menu_item);               //call function to print the result on the screen
                 break;
             case 2:
                 search_item = get_search_item();       //call function to get the search data
                 answer = better_linear_search(data_array,size_array,search_item); //call funtion to do a better linear search
+                show_data_array(data_array,size_array);  //call function to show the data array created
                 print_result(answer,menu_item);     //call function to print the result on the screen
                 break;
             case 3:
                 search_item = get_search_item();     // call function to get the search data
                 answer = sentinel_linear_search(data_array,size_array,search_item);      //call funtion to do a sentinel linear search
-                print_result(answer,menu_item);              //call funtion to print the result on the screen
+                show_data_array(data_array,size_array);    //call function to show the data array created
+                print_result(answer,menu_item);              //call function to print the result on the screen
                 break;
             case 4:
                 search_item = get_search_item();    //call function to get the search data
                 answer = recursive_linear_search(data_array,0,size_array,search_item); //call function to do a recursive linear search
-                print_result(answer,menu_item);               // call funtion to print the result on the screen
+                show_data_array(data_array,size_array);   //call function to show the data array created
+                print_result(answer,menu_item);               // call function to print the result on the screen
                 break;
             case 5:
-                show_data_array(data_array,size_array);             //call funtion to show the array generated
+                search_item = get_search_item();  //call function to get the search data
+                answer = binary_search(data_array,size_array,search_item);  //call function to do a binary search
+                print_result(answer,menu_item);   // call function to print the result on the screen
                 break;
             case 6:
+                show_data_array(data_array,size_array);             //call funtion to show the array generated
+                break;
+            case 7:
                 size_array=data_array_size();                  // call the function to get the new size of the data array 
                 delete [] data_array;                          // delete the old data array that was allocated (free space)
-                try
+                try                               // verify the allocation done
                 {
                     data_array= new int[size_array];                // create a new memory dynamic allocation of the data array
                 }
@@ -121,7 +132,7 @@ int main(void)
                 }
                 array_generator(data_array,size_array);            //call funtion to generate the new array elements
                 break;
-            case 7:
+            case 8:
                 cout<<"Ending..."<<endl;                          //print on screen a exit message
                 delete [] data_array;                            //delete the old data array that was allocated before exit
                 exit(0);  //terminate program and go to the system
@@ -134,7 +145,7 @@ int main(void)
         
         }
     
-    }while(1);  //loop to show the menu always  
+    }while(1);  //loop to show the menu forever 
 
 }   //end of main function
 
@@ -163,25 +174,25 @@ void print_result(int data, int menu_item)
 int data_array_size(void)
 {
     cout<<"Type the size of the data array :"<<endl;  //print on the screen the message
-    int size;                                      // create the variable
-    cin.clear(ios::goodbit);
+    int size;                                      // create the variable to store the size of array
+    cin.clear(ios::goodbit);                         //clean the goodbit
     cin >> size;                                   // get the array size 
     
-    while (!cin.good())
+    while (!cin.good())   //loop while an incorrect value is typed
     {
         cout<<"Incorrect size data! Type a number..."<<endl;   //print on the screen a message of error
-        cin.clear(ios::failbit);
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin>>size;   
+        cin.clear(ios::failbit);   //clean the goodbit
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');  //check unexpected type
+        cin >> size;    // get the array size again
     }
     cout<<"Data Array Interval 0 - "<<RAND_MAX<<" with "<<size<<" elements"<< endl;  //print on the screen the number elements and the range of the array that will be generated
-    return size;                                                                       //return the size value
+    return size;        //return the size of array value
 } //end of the function
 
 
-//********************************************************************************************************************************************************
+//**********************************************************************************
 // Function to show the data array generated
-//********************************************************************************************************************************************************
+//**********************************************************************************
 
 void show_data_array(int *data, int size)
 {
@@ -195,18 +206,19 @@ void show_data_array(int *data, int size)
 //************************************************************************************************************
 // Function to get the search data from the user
 //************************************************************************************************************
+
 int get_search_item(void)
 {
     int search;                                        //variable to save the search data
     cout<<"Type the search item: "<<endl;               //print on the screen
-    cin.clear(ios::goodbit);
+    cin.clear(ios::goodbit);        //clean the goodbit
     cin >> search;                  //get the number to search in the array
     
-    while (!cin.good())
+    while (!cin.good())  //loop while an incorrect value is typed
     {
         cout<<"Incorrect search data! Type a number..."<<endl; //print on the screen a message of error
-        cin.clear(ios::goodbit);
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.clear(ios::goodbit); //clean the goodbit
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');  //check unexpected type
         cin>>search;    // get the search data from the user
     }
     return search;            //return the search data

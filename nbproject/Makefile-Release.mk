@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/array_generator.o \
 	${OBJECTDIR}/better_linear_search.o \
+	${OBJECTDIR}/binary_search.o \
 	${OBJECTDIR}/linear_search.o \
 	${OBJECTDIR}/main_menu.o \
 	${OBJECTDIR}/recursive_linear_search.o \
@@ -76,6 +77,11 @@ ${OBJECTDIR}/better_linear_search.o: better_linear_search.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/better_linear_search.o better_linear_search.cpp
+
+${OBJECTDIR}/binary_search.o: binary_search.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/binary_search.o binary_search.cpp
 
 ${OBJECTDIR}/linear_search.o: linear_search.cpp
 	${MKDIR} -p ${OBJECTDIR}
